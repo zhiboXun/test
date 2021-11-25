@@ -15,6 +15,6 @@ public class TestController {
     @RequestMapping("/data")
     public String testData(){
         log.info("测试数据");
-        return "hello wordq1111";
+        return "hello word!";
     }
 }
