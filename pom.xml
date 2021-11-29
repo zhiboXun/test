@@ -51,7 +51,7 @@
                 <filtering>true</filtering>
                 <excludes>
                     <!-- 排除所有资源文件,如果不排除会导致打包错误（包含非UTF-8的文件） -->
-                    <exclude>property/*/*</exclude>
+                    <exclude>property/*</exclude>
                     <exclude>shell/*</exclude>
                     <exclude>/*.*</exclude>
                 </excludes>
@@ -59,37 +59,37 @@
         </resources>
 
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
-            <!-- 指定启动类，将依赖打成外部jar包 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <!--					<groupId>org.springframework.boot</groupId>-->
-                <!--					<artifactId>spring-boot-maven-plugin</artifactId>-->
-                <configuration>
-                    <archive>
-                        <!-- 生成的jar中，不要包含pom.xml和pom.properties这两个文件 -->
-                        <addMavenDescriptor>false</addMavenDescriptor>
-                        <manifest>
-                            <!-- 是否要把第三方jar放到manifest的classpath中 -->
-                            <addClasspath>true</addClasspath>
-                            <!-- 外部依赖jar包的最终位置 -->
-                            <classpathPrefix>lib/</classpathPrefix>
-                            <!-- 项目启动类 -->
-                            <mainClass>com.tegao.test.TestApplication</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-compiler-plugin</artifactId>-->
+<!--                <version>3.8.1</version>-->
+<!--                <configuration>-->
+<!--                    <source>1.8</source>-->
+<!--                    <target>1.8</target>-->
+<!--                    <encoding>UTF-8</encoding>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--            &lt;!&ndash; 指定启动类，将依赖打成外部jar包 &ndash;&gt;-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-jar-plugin</artifactId>-->
+<!--                &lt;!&ndash;					<groupId>org.springframework.boot</groupId>&ndash;&gt;-->
+<!--                &lt;!&ndash;					<artifactId>spring-boot-maven-plugin</artifactId>&ndash;&gt;-->
+<!--                <configuration>-->
+<!--                    <archive>-->
+<!--                        &lt;!&ndash; 生成的jar中，不要包含pom.xml和pom.properties这两个文件 &ndash;&gt;-->
+<!--                        <addMavenDescriptor>false</addMavenDescriptor>-->
+<!--                        <manifest>-->
+<!--                            &lt;!&ndash; 是否要把第三方jar放到manifest的classpath中 &ndash;&gt;-->
+<!--                            <addClasspath>true</addClasspath>-->
+<!--                            &lt;!&ndash; 外部依赖jar包的最终位置 &ndash;&gt;-->
+<!--                            <classpathPrefix>lib/</classpathPrefix>-->
+<!--                            &lt;!&ndash; 项目启动类 &ndash;&gt;-->
+<!--                            <mainClass>com.tegao.test.TestApplication</mainClass>-->
+<!--                        </manifest>-->
+<!--                    </archive>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
