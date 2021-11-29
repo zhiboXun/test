@@ -1,0 +1,65 @@
+<assembly>
+    <id>package</id>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+    <!-- 改为false不会出现两层相同的目录 -->
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <files>
+        <!--  将application-dev.yml文件一起打包-->
+        <file>
+            <source>src/main/resources/application.yml</source>
+            <outputDirectory>/config</outputDirectory>
+            <filtered>true</filtered>
+        </file>
+        <!--  将log4j2.xml文件一起打包-->
+<!--        <file>-->
+<!--            <source>src/main/resources/log4j2.xml</source>-->
+<!--            <outputDirectory>/config</outputDirectory>-->
+<!--        </file>-->
+    </files>
+    <fileSets>
+        <!-- 将程序入口的jar包放入外层目录-->
+        <fileSet>
+            <directory>${project.build.directory}</directory>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
+        <!-- 打包所需安装包，如java、mysql等 -->
+        <!--    <fileSet>-->
+        <!--      <directory>src/main/resources/essentialSoftware</directory>-->
+        <!--      <outputDirectory>/essentialSoftware</outputDirectory>-->
+        <!--    </fileSet>-->
+        <!-- 打包前端页面 -->
+<!--        <fileSet>-->
+<!--            <directory>src/test/resources/webapps</directory>-->
+<!--            <outputDirectory>/webapps</outputDirectory>-->
+<!--        </fileSet>-->
+        <!-- 打包项目脚本 -->
+        <fileSet>
+            <directory>src/main/resources/shell</directory>
+            <outputDirectory>/</outputDirectory>
+        </fileSet>
+    </fileSets>
+    <dependencySets>
+        <dependencySet>
+            <unpack>false</unpack>
+            <useProjectArtifact>true</useProjectArtifact>
+            <outputDirectory>lib/</outputDirectory>
+            <scope>runtime</scope>
+<!--            <excludes>-->
+<!--                <exclude>com.tegao.bfs:BfsClient</exclude>-->
+<!--            </excludes>-->
+        </dependencySet>
+    </dependencySets>
+    <!--    <dependencySets>-->
+    <!--        <dependencySet>-->
+    <!--            <unpack>false</unpack>-->
+    <!--            <useProjectArtifact>true</useProjectArtifact>-->
+    <!--            <outputDirectory>lib/</outputDirectory>-->
+    <!--            <scope>runtime</scope>-->
+    <!--        </dependencySet>-->
+    <!--    </dependencySets>-->
+</assembly>
